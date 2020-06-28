@@ -6,6 +6,10 @@ var JobsSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: true
+  },
   location: {
     type: String,
     required: true
@@ -34,12 +38,17 @@ var JobsSchema = new Schema({
   email: {
     type: String,
     required: true
-  },
+  }
+
   //Terminar con link (favs)
   // logo: {
   //   type:
   // }
 
+}, {
+  timestamps: { 
+      createdAt: 'created_at' 
+  }
 });
 
 // This creates our model from the above schema, using mongoose's model method

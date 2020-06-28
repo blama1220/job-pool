@@ -45,6 +45,7 @@ module.exports = function(app) {
 
     var objectSchema = {
       user: data.user,
+      category: data.category,
       location: data.location,
       position: data.position,
       company: data.company,

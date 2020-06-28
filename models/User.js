@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 var UserSchema = new Schema({
-    
+
     username: {
         type: "String",
         required: true
@@ -18,7 +18,12 @@ var UserSchema = new Schema({
     type: {
         type: "String",
         required: true
-    }
+    },
+    
+    }, {
+        timestamps: { 
+            createdAt: 'created_at' 
+        }
 });
 
 // This creates our model from the above schema, using mongoose's model method
