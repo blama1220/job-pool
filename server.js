@@ -14,7 +14,21 @@ app.use(express.static("public"));
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine('handlebars', exphbs({
+  defaultLayout: "main",
+  helpers:{
+    // Function to do basic mathematical operation in handlebar
+    math: function(lvalue, operator, rvalue) {lvalue = parseFloat(lvalue);
+        rvalue = parseFloat(rvalue);
+        return {
+            "+": lvalue + rvalue,
+            "-": lvalue - rvalue,
+            "*": lvalue * rvalue,
+            "/": lvalue / rvalue,
+            "%": lvalue % rvalue
+        }[operator];
+    }
+}}));
 app.set("view engine", "handlebars");
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/job-pool";

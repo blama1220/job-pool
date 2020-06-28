@@ -2,5 +2,6 @@
 
 module.exports = {
   Jobs: require("./Jobs"),
-  Users: require("./User")
+  Users: require("./User"),
+  Admin: require("./Admin")
 };

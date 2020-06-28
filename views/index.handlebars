@@ -119,38 +119,83 @@
 
   </div> 
   {{!-- end of jumbotron --}}
+
   <h1 id="jobtitle">
     Jobs
   </h1>
   <div class="jobs">
-    {{#each jobs}}
-    <div class="job">
-      <div class="card text-center">
-        <div class="card-body">
-          <h2 class="card-title">
-            {{this.position}}
-          </h2>
-          <h5 class="card-title">
-            {{this.company}}
-          </h5>
-          <p class="card-text">
-            {{this.description}}
-          </p>
-          <a href="#" class="btn btn-primary">
-            See More
-          </a>
-        </div>
-        <div class="card-footer text-muted">
-          <div class="row">
-            <div class="mx-auto">Categorie: {{this.category}}</div>
-          </div>
-          <div class="row">
-            <div class="mx-auto">Data Created: {{this.created_at}}</div>
-          </div>
-        </div>
+    {{#each jobArrays}}
+      <div class="page" id="page{{math @index "+" 1}}">
+      {{#each this}}
+        <div class="job">
+          <div class="card text-center">
+            <div class="card-body">
+              <h2 class="card-title">
+                {{this.position}}
+              </h2>
+              <h5 class="card-title">
+                {{this.company}}
+              </h5>
+              <p class="card-text">
+                {{this.description}}
+              </p>
+              <a href="#" class="btn btn-primary">
+                See More
+              </a>
+            </div>
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="mx-auto">Categorie: {{this.category}}</div>
+              </div>
+              <div class="row">
+                <div class="mx-auto">Data Created: {{this.created_at}}</div>
+              </div>
+            </div>
 
+          </div>
+        </div>
+      {{/each}}
       </div>
-    </div>
     {{/each}}
+  </div> 
+  {{!-- end of jobs div --}}
+  <div class="row justify-content-around mx-auto dropdwn">
+    <nav aria-label="...">
+      <ul class="pagination pagination-sm">
+        <li class="page-item">
+          <a class="page-link" value="1">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" value="2">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" value="3">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" value="4">4</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" value="5">5</a>
+        </li>
+
+      </ul>
+    </nav>  
   </div>
 </div>
+
+  {{!-- end of container --}}
+<script src="https://code.jquery.com/jquery.js"></script>
+<script>
+  var paginator = () => {
+    var num = $(this).attr("value");
+    $(".page").hide()
+    $("#page" + 1).show()
+  }
+  paginator()
+  $(".page-link").on("click", function () {
+    var num = $(this).attr("value");
+    $(".page").hide()
+    $("#page" + num).show()
+  })
+//$("ul li").length; look if page is empty
+</script>

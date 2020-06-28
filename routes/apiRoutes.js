@@ -63,6 +63,13 @@ module.exports = function(app) {
 
   });
 
+  //Create admin paginator
+  app.post("/admin", function(req, res) {
+    db.Admin.create(req.body).then(function(data){
+      res.json(data)
+    })
+  })
+
 
 
 
