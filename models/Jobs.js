@@ -16,24 +16,24 @@ var JobsSchema = new Schema({
   },
   company: {
     type: String,
-    require: true
+    required: true
   },
   // part time | full time | freelance
   time: {
     type: String,
-    require: true
+    required: true
   }, 
   url: {
     type: String,
-    require: false
+    required: false
   },
   description: {
     type: String,
-    require: true
+    required: true
   },
   email: {
     type: String,
-    require: true
+    required: true
   },
   //Terminar con link (favs)
   // logo: {
