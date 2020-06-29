@@ -56,23 +56,26 @@ module.exports = function(app) {
   //Create Job
   app.post("/jobs", function(req, res) {
     var data = req.body
-
-    var objectSchema = {
-      user: data.user,
-      category: data.category,
-      location: data.location,
-      position: data.position,
-      company: data.company,
-      time: data.time, 
-      url: data.url,
-      description: data.description,
-      email: data.email
+    if(req.cookies.user){
+      var objectSchema = {
+        user: req.cookies.user.user, //done from cookies
+        category: data.category, //done from data sent from webpage
+        location: data.location, //done from data sent from webpage
+        position: data.position, //done from data sent from webpage
+        company: data.company, //done from data sent from webpage
+        time: data.time, //done from data 
+        //url: data.url, //done from cookies
+        description: data.description, //done from data sent from webpage
+        email: req.cookies.user.email //done from cookies
+      }
+    } else {
+      res.json({msg: "Database error"})
     }
 
     db.Jobs.create(objectSchema).then(function(data){
-     res.json(data)
+     res.json({msg: "Job created successfully"})
     }).catch(function(err){
-      res.send("Error en la data base")
+      res.json({msg: "Database error"})
     });
 
   });
@@ -86,7 +89,8 @@ module.exports = function(app) {
         if(req.body.password === data.password){
           var userData = {
             user: data.username,
-            type: data.type
+            type: data.type,
+            email: data.email
           }
           res.cookie("user", userData, {maxAge: 60000});
           res.json({
