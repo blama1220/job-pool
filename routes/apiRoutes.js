@@ -75,7 +75,9 @@ module.exports = function(app) {
     db.Jobs.create(objectSchema).then(function(data){
      res.json({msg: "Job created successfully"})
     }).catch(function(err){
+      console.log(err)
       res.json({msg: "Database error"})
+      
     });
 
   });
@@ -92,7 +94,7 @@ module.exports = function(app) {
             type: data.type,
             email: data.email
           }
-          res.cookie("user", userData, {maxAge: 60000});
+          res.cookie("user", userData, {maxAge: 36000000});
           res.json({
             msg: "Credentials are correct, redirecting to homepage.",
           })

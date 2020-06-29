@@ -68,13 +68,13 @@
               Time
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" name="timebtn" value="Full time">
+              <a class="dropdown-item time" name="timebtn" value="Full time">
                 Full time
               </a>
-              <a class="dropdown-item" name="timebtn" value="Part time">
+              <a class="dropdown-item time" name="timebtn" value="Part time">
                 Part time
               </a>
-              <a class="dropdown-item" name="timebtn" value="Freelance">
+              <a class="dropdown-item time" name="timebtn" value="Freelance">
                 Freelance
               </a>
             </div>
@@ -84,25 +84,26 @@
 
 
         <div class="row">
-          <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle dropbtn"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Job Category
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{#each categories}}
-          <a class="dropdown-item" value={{this.name}}>
-            {{this.name}}
-          </a>
-          {{/each}}
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle dropbtn"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {{#each categories}}
+                <a class="dropdown-item cat" value={{this.name}}>
+                  {{this.name}}
+                </a>
+                {{/each}}
+              </div>
+            </div>
           </div>
-        </div>
       </div>
 
         <div class="row justify-content-around mx-auto dropdwn">
@@ -133,9 +134,14 @@
     location.href = "/";
   })
 
-    $('.dropdown-item').on("click", function (event) {
-        $('.' + $(this).attr('name')).text($(this).attr('value'))
+    $('.cat').on("click", function (event) {
+        $('.dropbtn').text($(this).attr('value'))
     })
+
+    $('.time').on("click", function (event) {
+        $('.timebtn').text($(this).attr('value'))
+    })
+
 
     $("#submit").on("click", function (event) {
         event.preventDefault();

@@ -146,19 +146,19 @@
   <div class="row justify-content-around mx-auto dropdwn">
     <nav aria-label="...">
       <ul class="pagination pagination-sm">
-        <li class="page-item">
+        <li class="page-item" id="pag1">
           <a class="page-link" value="1">1</a>
         </li>
-        <li class="page-item">
+        <li class="page-item" id="pag2">
           <a class="page-link" value="2">2</a>
         </li>
-        <li class="page-item">
+        <li class="page-item" id="pag3">
           <a class="page-link" value="3">3</a>
         </li>
-        <li class="page-item">
+        <li class="page-item" id="pag4">
           <a class="page-link" value="4">4</a>
         </li>
-        <li class="page-item">
+        <li class="page-item" id="pag5">
           <a class="page-link" value="5">5</a>
         </li>
 
@@ -176,8 +176,18 @@
     var num = $(this).attr("value");
     $(".page").hide()
     $("#page" + 1).show()
+
   }
-  paginator()
+  var fixPaginator = () => {
+    for(let i = 0; i < 5; i++){
+      console.log('#page' + (i+1) + ' lenght' +  $("#page" + (i+1)).length);
+      if( $("#page" + (i+1)).length > 0){
+      } else {
+        $('#pag' + (i+1)).hide();
+      }
+      };
+    };
+
   $(".page-link").on("click", function () {
     var num = $(this).attr("value");
     $(".page").hide()
@@ -187,6 +197,9 @@
     $('.dropbtn').text($(this).attr('value'))
     location.href = "/jobs/" + $(this).attr('value');
     })
+  paginator();
+  fixPaginator();
+  
   
   
 //$("ul li").length; look if page is empty
