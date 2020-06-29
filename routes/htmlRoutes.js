@@ -2,6 +2,7 @@ const db = require("../models");
 const { count } = require("../models/User");
 
 module.exports = function(app) {
+  //Homepage
   app.get("/", function(req, res) {
     db.Admin.findOne({}).then(function(data){
       var pagination = data.pagination;
@@ -34,9 +35,15 @@ module.exports = function(app) {
     }).catch(function(err){
       console.log(err)
     })
-    
-   
 
   });
+
+  //Sign Up
+  app.get("/signup", function(req, res) {
+    res.render("signup");
+  })
+
+  
+
   
 };

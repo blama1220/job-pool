@@ -46,8 +46,8 @@
         </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">
-          Sign In
+        <a class="nav-link" href="/signup">
+          Sign Up
         </a>
       </li>
       {{! <li class="nav-item">
@@ -82,7 +82,7 @@
     <div class="row justify-content-around mx-auto dropdwn">
       <div class="dropdown">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="btn btn-secondary dropdown-toggle dropbtn"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
@@ -92,25 +92,25 @@
           Categories
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Health">
             Health
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Technology">
             Technology
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Engenieering">
             Engenieering
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Education">
             Education
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Marketing">
             Marketing
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Law">
             Law
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" value="Design">
             Design
           </a>
         </div>
@@ -186,6 +186,7 @@
   {{!-- end of container --}}
 <script src="https://code.jquery.com/jquery.js"></script>
 <script>
+
   var paginator = () => {
     var num = $(this).attr("value");
     $(".page").hide()
@@ -197,5 +198,8 @@
     $(".page").hide()
     $("#page" + num).show()
   })
+  $('.dropdown-item').on("click", function (event) {
+    $('.dropbtn').text($(this).attr('value'))
+    })
 //$("ul li").length; look if page is empty
 </script>

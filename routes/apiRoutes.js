@@ -20,7 +20,6 @@ module.exports = function(app) {
 
   //Create User
   app.post("/users", function(req, res) {
-    console.log("le llegate")
     var data = req.body
 
     var objectSchema = {
@@ -29,13 +28,26 @@ module.exports = function(app) {
       email: data.email,
       type: data.type
     }
+    db.Users.findOne({
+      $or: [{email: objectSchema.email}, {username: objectSchema.username}]
+    }).then(function(data){
+     
+      if(data.length != 0){
+        res.json({
+          msg: "This username or email already exists in the database"
+        })
+      } else {
+        db.Users.create(objectSchema).then(function(userData){
+          res.json({
+            msg: "Welcome to job pool, " + userData.username
+          })
+         }).catch(function(err){
+           res.json({msg: "Database error"})
+           console.log(err)
+         });
+      }
+    })
 
-    db.Users.create(objectSchema).then(function(data){
-     res.json(data)
-    }).catch(function(err){
-      // res.send("Error en la data base")
-      console.log(err)
-    });
   })
 
 

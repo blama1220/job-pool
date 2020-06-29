@@ -40,11 +40,6 @@ var JobsSchema = new Schema({
     required: true
   }
 
-  //Terminar con link (favs)
-  // logo: {
-  //   type:
-  // }
-
 }, {
   timestamps: { 
       createdAt: 'created_at' 

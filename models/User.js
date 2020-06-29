@@ -19,6 +19,10 @@ var UserSchema = new Schema({
         type: "String",
         required: true
     },
+  //Terminar con link (favs)
+  // logo: {
+  //   type:
+  // }
     
     }, {
         timestamps: { 
