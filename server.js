@@ -11,6 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");

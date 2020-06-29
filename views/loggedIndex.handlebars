@@ -41,15 +41,11 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/login">
-          Log In
+        <a class="nav-link" id="logoutBtn">
+          Log Out
         </a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/signup">
-          Sign Up
-        </a>
-      </li>
+
       {{! <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> }}
@@ -59,7 +55,7 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4">
-      Welcome to Job Pool!
+      Welcome to Job Pool, {{username}}
     </h1>
     <p class="lead">
       This is a simple app that help employers and future workers get jobs an easy and convenient way.
@@ -186,7 +182,12 @@
 
 
 <script>
-  
+
+
+  $('#logoutBtn').on('click', function(){
+    document.cookie = 'user' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    location.reload;
+  })
   
   var paginator = () => {
     var num = $(this).attr("value");
