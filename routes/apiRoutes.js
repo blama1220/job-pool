@@ -115,15 +115,32 @@ module.exports = function(app) {
 
   //Create admin paginator
   app.post("/admin", function(req, res) {
+    var categories = ["Health","Technology","Engenieering","Education", "Marketing","Law","Design"];
+    for(let i = 0; i < categories.length; i++) {
+      db.Category.create({
+        name: categories[i]
+      }).then(function (data) {
+        console.log(categories[i] + " created succesfully");
+      }).catch(function (err) {
+        console.log("Error occurred");
+        console.log(err);
+      })
+    }
     db.Admin.create(req.body).then(function(data){
-      res.json(data)
+      res.json(data);
     }).catch(function(err){
       res.json({msg: "Database error"})
-      console.log(err)
+      console.log(err);
     });
-  })
 
+  });
 
-
+  
+  
 
 }
+
+
+
+
+

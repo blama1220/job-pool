@@ -46,10 +46,12 @@
         </a>
     
       </li>
+      {{#if canUpload}}
       <li class="nav-item active">
         <a class="nav-link" href="/upload">
           Upload Job
         </a>
+      {{/if}}
       </li>
 
       {{! <li class="nav-item">
@@ -94,27 +96,11 @@
           Categories
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" value="Health">
-            Health
+          {{#each categories}}
+          <a class="dropdown-item" value={{this.name}}>
+            {{this.name}}
           </a>
-          <a class="dropdown-item" value="Technology">
-            Technology
-          </a>
-          <a class="dropdown-item" value="Engenieering">
-            Engenieering
-          </a>
-          <a class="dropdown-item" value="Education">
-            Education
-          </a>
-          <a class="dropdown-item" value="Marketing">
-            Marketing
-          </a>
-          <a class="dropdown-item" value="Law">
-            Law
-          </a>
-          <a class="dropdown-item" value="Design">
-            Design
-          </a>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -141,8 +127,8 @@
               <p class="card-text">
                 {{this.description}}
               </p>
-              <a href="#" class="btn btn-primary">
-                Apply Now
+              <a href="/job/{{this._id}}" class="btn btn-primary">
+                See More
               </a>
             </div>
             <div class="card-footer text-muted">
@@ -207,8 +193,9 @@
     $("#page" + num).show()
   })
   $('.dropdown-item').on("click", function (event) {
-    $('.dropbtn').text($(this).attr('value'))
-    })
+    $('.dropbtn').text($(this).attr('value'));
+    location.href = "/jobs/" + $(this).attr('value');
+    });
   
   
 //$("ul li").length; look if page is empty

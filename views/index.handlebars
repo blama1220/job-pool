@@ -92,27 +92,11 @@
           Categories
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" value="Health">
-            Health
+          {{#each categories}}
+          <a class="dropdown-item" value={{this.name}}>
+            {{this.name}}
           </a>
-          <a class="dropdown-item" value="Technology">
-            Technology
-          </a>
-          <a class="dropdown-item" value="Engenieering">
-            Engenieering
-          </a>
-          <a class="dropdown-item" value="Education">
-            Education
-          </a>
-          <a class="dropdown-item" value="Marketing">
-            Marketing
-          </a>
-          <a class="dropdown-item" value="Law">
-            Law
-          </a>
-          <a class="dropdown-item" value="Design">
-            Design
-          </a>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -201,6 +185,7 @@
   })
   $('.dropdown-item').on("click", function (event) {
     $('.dropbtn').text($(this).attr('value'))
+    location.href = "/jobs/" + $(this).attr('value');
     })
   
   

@@ -3,5 +3,6 @@
 module.exports = {
   Jobs: require("./Jobs"),
   Users: require("./User"),
-  Admin: require("./Admin")
+  Admin: require("./Admin"),
+  Category: require("./Category")
 };
